@@ -1,0 +1,20 @@
+{
+    "name": "YTDown",
+    "description": "The best way to download songs from YouTube.",
+    "version": "0.2.2",
+    "manifest_version": 2,
+    "icons": {
+        "128": "img128.png"
+    },
+    "page_action": {
+        "show_matches": [
+            "*://www.youtube.com/watch*"
+        ],
+        "default_icon": "img128.png",
+        "default_popup": "loading.html"
+    },
+    "permissions": [
+        "tabs",
+        "downloads"
+    ]
+}

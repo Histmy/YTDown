@@ -1,0 +1,108 @@
+body {
+  width: max-content;
+  overflow: hidden;
+  font-family: Roboto;
+  margin: 20px;
+  margin-bottom: 0
+}
+
+label { font-size: 24px }
+
+input[type=file] { display: none }
+
+.kontajner {
+  display: flex;
+  flex-direction: column;
+  height: 380px;
+  flex-wrap: wrap;
+  margin-left: 30px;
+  width: 680px
+}
+
+label { display: block }
+
+input[type=text] {
+  width: 300px;
+  height: 50px;
+  margin-bottom: 47px
+}
+
+.edit {
+  opacity: 0;
+  position: absolute;
+  background-color: #0007;
+  transition: opacity 0.1s
+}
+
+.edit:hover { opacity: 1 }
+
+.tuzka {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%
+}
+
+.kavr, .edit {
+  width: 300px;
+  height: 300px
+}
+
+.cover { width: 280px }
+
+.obal { text-align: center }
+
+.btn {
+  width: 240px;
+  height: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Roboto
+}
+
+.loading {
+  display: none;
+  width: calc(100vw - 40px);
+  text-align: center;
+  height: calc(100vh - 40px)
+}
+
+h1 {
+  font-size:36px;
+  margin: 20px 0 120px
+}
+
+p { font-size: 24px }
+
+.size { font-weight: bold }
+
+.kancel { margin-top: 85px }
+
+.succ, .err, .proc {
+  margin: 0;
+  text-align: center
+}
+
+.succ h1, .err h1, .proc h1 { width: 100vw }
+
+.succ {
+  background-color: #cec;
+  color: #060
+}
+
+.succ h1 { margin: 175px 0 50px }
+
+.err {
+  background-color: #ecc;
+  color: #700;
+}
+
+.err h1 { margin: 150px 0 100px }
+
+.err code {
+  background-color: #600;
+  color: #ecc;
+  padding: 8px 3px;
+}
+
+.proc h1 { margin: 175px 0 50px }
