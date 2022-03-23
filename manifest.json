@@ -16,7 +16,7 @@
         "show_matches": [
             "*://www.youtube.com/watch*"
         ],
-        "default_icon": "images/iconT.png"
+        "default_icon": "images/icon.png"
     },
     "permissions": [
         "tabs",
