@@ -1,17 +1,22 @@
 {
     "name": "YTDown",
     "description": "The best way to download songs from YouTube.",
-    "version": "0.2.2",
+    "version": "0.3.0",
+    "homepage_url": "https://github.com/Histmy/YTDown",
     "manifest_version": 2,
     "icons": {
-        "128": "img128.png"
+        "128": "images/icon.png"
+    },
+    "background": {
+        "scripts": [
+            "scripts/background.js"
+        ]
     },
     "page_action": {
         "show_matches": [
             "*://www.youtube.com/watch*"
         ],
-        "default_icon": "img128.png",
-        "default_popup": "loading.html"
+        "default_icon": "images/iconT.png"
     },
     "permissions": [
         "tabs",

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0.3.0</title>
+  <link rel="icon" href="../images/icon.png" type="image/icon type">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <form>
+    <div class="inputs">
+      <div class="input">
+        <label for="title">Název</label>
+        <input type="text" name="title" id="title">
+      </div>
+      <div class="input">
+        <label for="interpret">Interpret</label>
+        <input type="text" name="interpret" id="interpret">
+      </div>
+      <div class="input">
+        <label for="album">Album</label>
+        <input type="text" name="album" id="album">
+      </div>
+    </div>
+    <div class="img">
+      <label>Obrázek</label>
+      <div class="edit">
+        <img class="tuzka" src="../images/tuzka.png">
+      </div>
+      <img class="cover">
+    </div>
+    <input type="file" class="hidden">
+    <input class="btn" type="submit" value="Stáhnout">
+  </form>
+
+  <div class="downloading hidden">
+    <div class="st1">
+      <h1>Čekání na zahájení stahování</h1>
+    </div>
+    <div class="st2 hidden">
+      <h1>Stahování probíhá</h1>
+      <h2>Zbývá přibližně: <span class="remaining"></span></h2>
+      <div>
+        <div class="border">
+          <div class="progress"></div>
+        </div>
+        <span class="progress"></span>
+      </div>
+    </div>
+    <div class="st3 hidden">
+      <h1>Stahování úspěšně dokončeno</h1>
+      <h2>Toto okno můžete zavřít</h2>
+    </div>
+    <button class="btn cancel">Zrušit</button>
+  </div>
+
+  <div class="errs"></div>
+
+  <script type="module" src="../scripts/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+/* Fonts */
+@font-face {
+  font-family: Ubuntu;
+  font-weight: 400;
+  src: url("UbuntuR.woff2")
+}
+
+@font-face {
+  font-family: Ubuntu;
+  font-weight: 500;
+  src: url("UbuntuM.woff2")
+}
+
+@font-face {
+  font-family: Ubuntu;
+  font-weight: 700;
+  src: url("UbuntuB.woff2")
+}
+
+/* Global */
+.hidden { display: none !important }
+
+body {
+  --main: #D82727;
+  --back: #212121;
+  display: grid;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--back);
+  align-items: center;
+  justify-content: center
+}
+
+body, input, .btn{
+  color: #FFF;
+  font-family: Ubuntu;
+  font-size: 18px
+}
+
+/* Errors */
+.errs {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none
+}
+
+.err {
+  display: flex;
+  width: 420px;
+  min-height: 80px;
+  background-color: #4E1B1B;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.15s;
+  pointer-events: all
+}
+
+.err:hover { filter: brightness(80%) }
+
+.err > div {
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  align-items: center;
+}
+
+.err p {
+  margin: 0;
+  padding: 10px;
+  width: 340px;
+  height: min-content;
+  align-self: center
+}
+
+a, a:visited {
+  color: hsl(188.5, 100%, 50%);
+}
+
+/* Main stage */
+form {
+  display: grid;
+  align-items: center;
+  gap: 45px
+}
+
+.inputs {
+  display: flex;
+  height: 100%;
+  justify-self: start;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+.img { justify-self: end }
+
+.input, .img { width: min-content }
+
+label {
+  display: inline-block;
+  margin-bottom: 3px;
+  font-size: 24px;
+  font-weight: 500
+}
+
+input {
+  box-sizing: border-box;
+  width: 304px;
+  height: 54px;
+  padding: 12px;
+  background-color: var(--back);
+  color: #FFF;
+  transition: 0.15s
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--main)
+}
+
+input, .edit, .cover, .border {
+  border: 2px solid #FFF;
+  border-radius: 10px
+}
+
+.edit {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  opacity: 0;
+  background-color: #0007;
+  transition: 0.15s;
+  cursor: pointer
+}
+
+.edit:hover { opacity: 1 }
+
+.tuzka {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%
+}
+
+.cover {
+  display: block;
+  width: 300px;
+  height: 300px
+}
+
+.btn {
+  width: 240px;
+  border: unset;
+  border-radius: 50px;
+  grid-column: span 2;
+  background-color: var(--main);
+  font-weight: 500;
+  font-size: 24px;
+  justify-self: center;
+  cursor: pointer;
+  transition: 0.15s
+}
+
+.btn:hover { filter: brightness(75%) }
+
+/* Downloading stage */
+h1, h2 {
+  text-align: center;
+  margin: 0
+}
+
+h2 { font-weight: 500 }
+
+.cancel {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 100px;
+  height: 38px;
+  font-size: 18px
+}
+
+.st2, .st3 {
+  display: flex;
+  flex-direction: column;
+  gap: 75px
+}
+
+.st3 { gap: 30px }
+
+.st2 > div {
+  display: flex;
+  align-items: center;
+  gap: 15px
+}
+
+.border {
+  width: 500px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+div.progress {
+  height: 100%;
+  background-color: #3EAB2C;
+  transition: 1s
+}
+
+span.progress {
+  font-size: 24px;
+  width: 50px
+}

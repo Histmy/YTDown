@@ -1,0 +1,18 @@
+{
+  "name": "ytdown",
+  "version": "0.3.0",
+  "description": "The best way to download songs from YouTube.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Histmy/YTDown.git"
+  },
+  "author": "Histmy",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Histmy/YTDown/issues"
+  },
+  "homepage": "https://github.com/Histmy/YTDown#readme",
+  "dependencies": {
+    "@types/firefox-webext-browser": "^94.0.1"
+  }
+}
