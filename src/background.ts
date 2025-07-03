@@ -1,11 +1,14 @@
-let winId: number | undefined;
 let bar = Number(localStorage.getItem("barHeight")) || 0;
 const requiredSize = 500;
+const requiredWidth = 790;
 let windowHeight = bar + requiredSize;
 
 browser.pageAction.onClicked.addListener(async tab => {
   const id = /v=([\w\d_-]+)/i.exec(tab.url!)?.[1];
-  winId = (await browser.windows.create({ url: `res/popup.html?id=${id}`, width: 790, height: windowHeight, type: "panel" })).id;
+  const win = await browser.windows.create({ url: `res/popup.html?id=${id}`, width: requiredWidth, height: windowHeight, type: "panel" });
+
+  // If RFP is enabled, the window will be created with a different size than requested. Simply resize it again.
+  browser.windows.update(win.id!, { width: requiredWidth, height: windowHeight });
 });
 
 /*
@@ -13,11 +16,15 @@ browser.pageAction.onClicked.addListener(async tab => {
   If for whatever reason the size of the title bar is different,
   we could have either too little or too much space for actuall content.
 */
-browser.runtime.onMessage.addListener(mes => {
+browser.runtime.onMessage.addListener((mes, sender) => {
   if (mes.height == requiredSize) return;
 
   bar = windowHeight - mes.height;
-  localStorage.setItem("barHeight", `${bar}`);
+  localStorage.setItem("barHeight", bar.toString());
   windowHeight = bar + requiredSize;
-  browser.windows.update(winId!, { height: windowHeight });
+
+  const id = sender.tab?.windowId;
+  if (!id) throw new Error("No tab ID provided in message sender");
+
+  browser.windows.update(id, { height: windowHeight });
 });

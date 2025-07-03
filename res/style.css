@@ -187,7 +187,7 @@ h2 { font-weight: 500 }
   font-size: 18px
 }
 
-.st2, .st3 {
+.st1, .st2, .st3 {
   display: flex;
   flex-direction: column;
   gap: 75px
