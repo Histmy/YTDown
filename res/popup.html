@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0.4.0</title>
   <link rel="icon" href="../images/icon.png" type="image/icon type">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -39,10 +38,19 @@
 
   <div class="downloading hidden">
     <div class="st1">
-      <h1>Stahování zahájeno</h1>
-      <h2>Prosím, čekejte</h2>
+      <h1>Probíhá zahajování stahování</h1>
     </div>
     <div class="st2 hidden">
+      <h1>Stahování probíhá</h1>
+      <h2>Zbývá přibližně: <span class="remaining">probíhá výpočet...</span></h2>
+      <div>
+        <div class="border">
+          <div class="progress"></div>
+        </div>
+        <span class="progress"></span>
+      </div>
+    </div>
+    <div class="st3 hidden">
       <h1>Stahování úspěšně dokončeno</h1>
       <h2>Toto okno můžete zavřít</h2>
     </div>

@@ -1,7 +1,7 @@
 {
     "name": "YTDown",
     "description": "The best way to download music from YouTube.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "homepage_url": "https://github.com/Histmy/YTDown",
     "manifest_version": 2,
     "icons": {

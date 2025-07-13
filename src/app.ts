@@ -10,8 +10,12 @@ const coverImg = getEl<HTMLImageElement>(".cover");
 const filePicker = getEl<HTMLInputElement>("input[type=file]");
 const downloading = getEl(".downloading");
 const cancelBtn = getEl(".cancel");
+const progressBar = getEl("div.progress");
+const progress = getEl("span.progress");
+const remaining = getEl(".remaining");
 const stage1 = getEl(".st1");
 const stage2 = getEl(".st2");
+const stage3 = getEl(".st3");
 const errs = getEl(".errs");
 const baseProps = ["interpret", "title", "album"];
 let controller: AbortController;
@@ -26,8 +30,38 @@ function getEl<T extends HTMLElement>(selector: string) {
 function showError(err: string, link?: string) {
   const el = document.createElement("div");
   el.classList.add("err");
-  const mes = (!link) ? err : err.replace(/\{([^\}]+)\}/g, `<a target="_blank" href="${link}">$1</a>`);
-  el.innerHTML = `<div><img src="../images/triangle.svg" width="50px"></div><p>${mes}</p>`;
+
+  const imgEl = document.createElement("img");
+  imgEl.src = "../images/triangle.svg";
+  imgEl.width = 50;
+
+  const imgContainer = document.createElement("div");
+  imgContainer.appendChild(imgEl);
+
+  el.appendChild(imgContainer);
+
+  const mesEl = document.createElement("p");
+
+  if (!link) {
+    mesEl.textContent = err;
+  } else {
+    const match = err.match(/\{([^\}]+)\}/g)!;
+    const matchIndex = err.indexOf(match[0]);
+
+    mesEl.appendChild(document.createTextNode(err.slice(0, matchIndex)));
+
+    const linkEl = document.createElement("a");
+    linkEl.target = "_blank";
+    linkEl.href = link;
+    linkEl.textContent = match[0].slice(1, -1); // Remove the curly braces
+
+    mesEl.appendChild(linkEl);
+
+    mesEl.appendChild(document.createTextNode(err.slice(matchIndex + match[0].length)));
+  }
+
+  el.appendChild(mesEl);
+
   errs.appendChild(el);
 }
 
@@ -37,6 +71,7 @@ function switchEls(from: HTMLElement, to: HTMLElement) {
 }
 
 function restart() {
+  switchEls(stage2, stage1);
   switchEls(downloading, form);
 }
 
@@ -104,8 +139,15 @@ form.onsubmit = async e => {
   controller = new AbortController();
 
   try {
-    const { title, data } = await download(vidID, controller);
-    switchEls(stage1, stage2);
+    const { title, data } = await download(vidID, controller, (p, left) => {
+      switchEls(stage1, stage2);
+      progressBar.style.width = progress.innerText = `${p}%`;
+      if (left) {
+        remaining.textContent = `Zbývá: ${left} sekund`;
+      }
+    });
+
+    switchEls(stage2, stage3);
     cancelBtn.classList.add("hidden");
 
     const name = (props.has("interpret") && props.has("title")) ? `${props.get("interpret")} - ${props.get("title")}.mp3`.replace(/[\/\\?<>:*|"]/g, "_") : `${title}.mp3`;
@@ -117,6 +159,12 @@ form.onsubmit = async e => {
       filename: name
     });
   } catch (e) {
+    const isError = e instanceof Error;
+
+    if (isError && e.name == "AbortError") {
+      return;
+    }
+
     const mes = (e instanceof Error) ? e.message : "Při stahování souboru došlo k neočekávané chybě.";
     showError(mes);
     restart();
@@ -129,6 +177,8 @@ if (!vidID) {
   throw new Error("No video ID found in URL.");
 }
 
+document.title = browser.runtime.getManifest().version;
+
 baseProps.forEach(n => {
   form[n].value = localStorage.getItem(n);
 });
@@ -140,7 +190,36 @@ setTimeout(() => {
 
 // Check if server is available and if there is newer version
 fetch(`${config.domain}/latest-version`).then(async r => {
-  if (await r.text() != "0.4") showError("Je dostupná novější verze YTDown. Aktualizaci můžete provés pomocí {tohoto návodu}.", "https://support.mozilla.org/cs/kb/jak-aktualizovat-doplnky#w_aktualizace-doplnku");
+  if (r.status != 200) {
+    showError("Server neodpovídá správně. Zkuste to později.");
+    return;
+  }
+
+  const currentVersion = browser.runtime.getManifest().version;
+  const currentSections = currentVersion.split(".");
+
+  const text = await r.text();
+
+  const sections = text.trim().split(".");
+
+  sections.some((section, i) => {
+    const number = Number(section);
+
+    if (isNaN(number)) {
+      showError("Server vrátil neplatnou verzi. Zkuste to později.");
+      throw new Error("Invalid version format from server.");
+    }
+
+    if (currentSections[i] && number < Number(currentSections[i])) {
+      showError(`Aktuální server podporuje starší verzi YTDown. Vy používáte ${currentVersion} a server hlásí nejnovější jako ${text}. Stahování může probíhat nestandardně, nebo nemusí fungovat vůbec.`);
+      return true; // Stop the loop
+    }
+
+    if (currentSections[i] && number > Number(currentSections[i])) {
+      showError("Je dostupná novější verze YTDown. Aktualizaci můžete provést pomocí {tohoto návodu}.", "https://support.mozilla.org/cs/kb/jak-aktualizovat-doplnky#w_aktualizace-doplnku");
+      return true; // Stop the loop
+    }
+  });
 }).catch(() => {
   showError("Server není dostupný. Zkuste to později.");
 });

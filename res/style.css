@@ -187,7 +187,7 @@ h2 { font-weight: 500 }
   font-size: 18px
 }
 
-.st1, .st2, .st3 {
+.st2, .st3 {
   display: flex;
   flex-direction: column;
   gap: 75px
@@ -211,7 +211,6 @@ h2 { font-weight: 500 }
 div.progress {
   height: 100%;
   background-color: #3EAB2C;
-  transition: 1s
 }
 
 span.progress {
