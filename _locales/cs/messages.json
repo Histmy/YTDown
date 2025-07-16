@@ -1,0 +1,77 @@
+{
+  "addonDescription": {
+    "message": "Nejlepší možnost jak stahovat písničky z YouTubu."
+  },
+  "songTitle": {
+    "message": "Název skladby"
+  },
+  "songInterpret": {
+    "message": "Interpret"
+  },
+  "songAlbum": {
+    "message": "Název alba"
+  },
+  "songImage": {
+    "message": "Obrázek alba"
+  },
+  "download": {
+    "message": "Stáhnout"
+  },
+  "downloadStarting": {
+    "message": "Zahajování stahování"
+  },
+  "downloadInProgress": {
+    "message": "Stahování probíhá"
+  },
+  "downloadRemaining": {
+    "message": "Zbývá přibližně:"
+  },
+  "downloadRemainingCalculating": {
+    "message": "probíhá výpočet..."
+  },
+  "downloadFinished": {
+    "message": "Stahování bylo úspěšně dokončeno"
+  },
+  "canCloseWindow": {
+    "message": "Toto okno můžete nyní zavřít"
+  },
+  "cancel": {
+    "message": "Zrušit"
+  },
+  "serverUnavailable": {
+    "message": "Server není dostupný. Zkuste to prosím později."
+  },
+  "updateAvailable": {
+    "message": "Je dostupná novější verze YTDown. Aktualizaci můžete provést pomocí {tohoto návodu}."
+  },
+  "updateGuideLink": {
+    "message": "https://support.mozilla.org/cs/kb/jak-aktualizovat-doplnky#w_aktualizace-doplnku"
+  },
+  "serverOld": {
+    "message": "Aktuální server podporuje starší verzi YTDown. Vy používáte $1 a server hlásí nejnovější jako $2. Stahování může probíhat nestandardně, nebo nemusí fungovat vůbec."
+  },
+  "serverInvalidVersionFormat": {
+    "message": "Server vrátil neplatnou verzi. Zkuste to prosím později."
+  },
+  "serverInvalidResponse": {
+    "message": "Server neodpověděl správně. Zkuste to prosím později."
+  },
+  "noVideoID": {
+    "message": "Nepodařilo se získat ID videa. Zkontrolujte prosím, zda je URL videa ve správném tvaru."
+  },
+  "downloadErrorReason": {
+    "message": "Stahování se nezdařilo. Důvod: $1"
+  },
+  "downloadUnknownError": {
+    "message": "Při stahování došlo k neznámé chybě."
+  },
+  "imageTooLarge": {
+    "message": "Obrázek je příliš velký. Zkuste vybrat jiný."
+  },
+  "imageInvalidType": {
+    "message": "Tento soubor není obrázek. Zkuste vybrat jiný."
+  },
+  "imageUnknownError": {
+    "message": "Při ukládání obrázku došlo k neznámé chybě. Zkuste to znovu, nebo zkuste jiný."
+  }
+}

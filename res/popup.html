@@ -13,36 +13,39 @@
   <form>
     <div class="inputs">
       <div class="input">
-        <label for="title">Název</label>
+        <label for="title" data-i18n="songTitle"></label>
         <input type="text" name="title" id="title">
       </div>
       <div class="input">
-        <label for="interpret">Interpret</label>
+        <label for="interpret" data-i18n="songInterpret"></label>
         <input type="text" name="interpret" id="interpret">
       </div>
       <div class="input">
-        <label for="album">Album</label>
+        <label for="album" data-i18n="songAlbum"></label>
         <input type="text" name="album" id="album">
       </div>
     </div>
     <div class="img">
-      <label>Obrázek</label>
+      <label data-i18n="songImage"></label>
       <div class="edit">
         <img class="tuzka" src="../images/tuzka.png">
       </div>
       <img class="cover">
     </div>
     <input type="file" class="hidden">
-    <input class="btn" type="submit" value="Stáhnout">
+    <input class="btn" type="submit" data-i18n-value="download">
   </form>
 
   <div class="downloading hidden">
     <div class="st1">
-      <h1>Probíhá zahajování stahování</h1>
+      <h1 data-i18n="downloadStarting"></h1>
     </div>
     <div class="st2 hidden">
-      <h1>Stahování probíhá</h1>
-      <h2>Zbývá přibližně: <span class="remaining">probíhá výpočet...</span></h2>
+      <h1 data-i18n="downloadInProgress"></h1>
+      <h2>
+        <span data-i18n="downloadRemaining"></span>
+        <span class="remaining" data-i18n="downloadRemainingCalculating"></span>
+      </h2>
       <div>
         <div class="border">
           <div class="progress"></div>
@@ -51,15 +54,16 @@
       </div>
     </div>
     <div class="st3 hidden">
-      <h1>Stahování úspěšně dokončeno</h1>
-      <h2>Toto okno můžete zavřít</h2>
+      <h1 data-i18n="downloadFinished"></h1>
+      <h2 data-i18n="canCloseWindow"></h2>
     </div>
-    <button class="btn cancel">Zrušit</button>
+    <button class="btn cancel" data-i18n="cancel"></button>
   </div>
 
   <div class="errs"></div>
 
   <script type="module" src="../scripts/app.js"></script>
+  <script type="module" src="../scripts/localization.js"></script>
 </body>
 
 </html>

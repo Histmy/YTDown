@@ -1,5 +1,6 @@
 import { download } from "./downloader.js";
 import { config } from "./settings.js";
+import { getRelevantString } from "./localization.js";
 import id3 from "./id3.js";
 
 // Constants and variables
@@ -85,7 +86,7 @@ edit.onclick = () => filePicker.click();
 
 filePicker.onchange = () => {
   const f = filePicker.files?.[0];
-  if (!f?.type.startsWith("image")) return showError("Tento soubor není obrázek. Zkuste vybrat jiný soubor.");
+  if (!f?.type.startsWith("image")) return showError(getRelevantString("imageInvalidType"));
   const reader = new FileReader();
   reader.readAsDataURL(f);
   reader.onload = () => {
@@ -95,9 +96,9 @@ filePicker.onchange = () => {
       coverImg.src = res;
     } catch (e) {
       console.error(e);
-      if (!(e instanceof Error)) return showError("Při ukládání obrázku nastala neočekávaná chyba. Zkuste to znovu, nebo zkuste vybrat jiný.");
-      if (e.name == "QuotaExceededError") showError("Tento obrázek je příliš velký. Zkuste vybrat jiný.");
-      else showError("Při ukládání obrázku nastala neočekávaná chyba. Zkuste to znovu, nebo zkuste vybrat jiný.");
+      if (!(e instanceof Error)) return showError(getRelevantString("imageUnknownError"));
+      if (e.name == "QuotaExceededError") showError(getRelevantString("imageTooLarge"));
+      else showError(getRelevantString("imageUnknownError"));
     }
   };
 };
@@ -143,7 +144,7 @@ form.onsubmit = async e => {
       switchEls(stage1, stage2);
       progressBar.style.width = progress.innerText = `${p}%`;
       if (left) {
-        remaining.textContent = `Zbývá: ${left} sekund`;
+        remaining.textContent = `${left}s`;
       }
     });
 
@@ -165,7 +166,7 @@ form.onsubmit = async e => {
       return;
     }
 
-    const mes = (e instanceof Error) ? e.message : "Při stahování souboru došlo k neočekávané chybě.";
+    const mes = (e instanceof Error) ? e.message : getRelevantString("downloadUnknownError");
     showError(mes);
     restart();
   }
@@ -173,7 +174,7 @@ form.onsubmit = async e => {
 
 // Other stuff
 if (!vidID) {
-  showError("Nepodařilo se získat ID videa. Zkontrolujte, zda je URL videa ve správném formátu.");
+  showError(getRelevantString("noVideoID"));
   throw new Error("No video ID found in URL.");
 }
 
@@ -191,7 +192,7 @@ setTimeout(() => {
 // Check if server is available and if there is newer version
 fetch(`${config.domain}/latest-version`).then(async r => {
   if (r.status != 200) {
-    showError("Server neodpovídá správně. Zkuste to později.");
+    showError(getRelevantString("serverInvalidResponse"));
     return;
   }
 
@@ -206,20 +207,20 @@ fetch(`${config.domain}/latest-version`).then(async r => {
     const number = Number(section);
 
     if (isNaN(number)) {
-      showError("Server vrátil neplatnou verzi. Zkuste to později.");
+      showError(getRelevantString("invalidVersionFormat"));
       throw new Error("Invalid version format from server.");
     }
 
     if (currentSections[i] && number < Number(currentSections[i])) {
-      showError(`Aktuální server podporuje starší verzi YTDown. Vy používáte ${currentVersion} a server hlásí nejnovější jako ${text}. Stahování může probíhat nestandardně, nebo nemusí fungovat vůbec.`);
+      showError(getRelevantString("olderVersionWarning", [currentVersion, text]));
       return true; // Stop the loop
     }
 
     if (currentSections[i] && number > Number(currentSections[i])) {
-      showError("Je dostupná novější verze YTDown. Aktualizaci můžete provést pomocí {tohoto návodu}.", "https://support.mozilla.org/cs/kb/jak-aktualizovat-doplnky#w_aktualizace-doplnku");
+      showError(getRelevantString("updateAvailable"), getRelevantString("updateGuideLink"));
       return true; // Stop the loop
     }
   });
 }).catch(() => {
-  showError("Server není dostupný. Zkuste to později.");
+  showError(getRelevantString("serverUnavailable"));
 });

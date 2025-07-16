@@ -1,6 +1,6 @@
 {
     "name": "YTDown",
-    "description": "The best way to download music from YouTube.",
+    "description": "__MSG_addonDescription__",
     "version": "0.4.1",
     "homepage_url": "https://github.com/Histmy/YTDown",
     "manifest_version": 2,
@@ -21,5 +21,6 @@
     "permissions": [
         "tabs",
         "downloads"
-    ]
+    ],
+    "default_locale": "en"
 }

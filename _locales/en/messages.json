@@ -1,0 +1,77 @@
+{
+  "addonDescription": {
+    "message": "The best way to download music from YouTube."
+  },
+  "songTitle": {
+    "message": "Song title"
+  },
+  "songInterpret": {
+    "message": "Interpret"
+  },
+  "songAlbum": {
+    "message": "Album title"
+  },
+  "songImage": {
+    "message": "Cover image"
+  },
+  "download": {
+    "message": "Download"
+  },
+  "downloadStarting": {
+    "message": "Starting the download"
+  },
+  "downloadInProgress": {
+    "message": "Downloading is in progress"
+  },
+  "downloadRemaining": {
+    "message": "Approximately remaining:"
+  },
+  "downloadRemainingCalculating": {
+    "message": "calculating..."
+  },
+  "downloadFinished": {
+    "message": "Downloading has completed successfully"
+  },
+  "canCloseWindow": {
+    "message": "You can close this window now"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "serverUnavailable": {
+    "message": "Server is unavailable. Please try again later."
+  },
+  "updateAvailable": {
+    "message": "A newer version of YTDown is available. You can update it using {this guide}."
+  },
+  "updateGuideLink": {
+    "message": "https://support.mozilla.org/en-US/kb/how-to-update-add-ons#w_update-an-add-on"
+  },
+  "serverOld": {
+    "message": "The current server supports an older version of YTDown. You are using $1 and the server reports the latest as $2. Downloading may behave unexpectedly or may not work at all."
+  },
+  "serverInvalidVersionFormat": {
+    "message": "The server returned an invalid version format. Please try again later."
+  },
+  "serverInvalidResponse": {
+    "message": "The server did not respond correctly. Please try again later."
+  },
+  "noVideoID": {
+    "message": "Failed to retrieve the video ID. Please check if the video URL is in the correct format."
+  },
+  "downloadErrorReason": {
+    "message": "The download failed. Reason: $1"
+  },
+  "downloadUnknownError": {
+    "message": "An unexpected error occurred while downloading the file."
+  },
+  "imageTooLarge": {
+    "message": "This image is too large. Please try selecting a different one."
+  },
+  "imageInvalidType": {
+    "message": "This file is not an image. Please try selecting a different file."
+  },
+  "imageUnknownError": {
+    "message": "An unexpected error occurred while saving the image. Please try again or select a different one."
+  }
+}

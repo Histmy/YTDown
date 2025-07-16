@@ -23,6 +23,7 @@
 body {
   --main: #D82727;
   --back: #212121;
+  visibility: hidden; /* Hidden until the page is fully loaded */
   display: grid;
   margin: 0;
   width: 100vw;

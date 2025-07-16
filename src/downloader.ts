@@ -3,6 +3,7 @@
  * It handles the WebSocket connection and manages the download state,
  */
 
+import { getRelevantString } from "./localization.js";
 import { config } from "./settings.js";
 
 /**
@@ -24,7 +25,7 @@ export async function download(videoId: string, controller: AbortController, upd
 
   if (res.status != 200) {
     const err = await res.text();
-    throw new Error(`Stahování se nezdařilo. Důvod: ${err}`);
+    throw new Error(getRelevantString("downloadErrorReason", [err]));
   }
 
   let data: Uint8Array;
