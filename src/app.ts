@@ -151,13 +151,13 @@ form.onsubmit = async e => {
     switchEls(stage2, stage3);
     cancelBtn.classList.add("hidden");
 
-    const name = (props.has("interpret") && props.has("title")) ? `${props.get("interpret")} - ${props.get("title")}.mp3`.replace(/[\/\\?<>:*|"]/g, "_") : `${title}.mp3`;
+    const name = (props.has("interpret") && props.has("title")) ? `${props.get("interpret")} - ${props.get("title")}.mp3` : `${title}.mp3`;
 
     const song = id3(data, props.get("title"), props.get("interpret"), props.get("album"), props.get("imgMIME"), props.get("image"));
 
     browser.downloads.download({
       url: URL.createObjectURL(new Blob([song])),
-      filename: name
+      filename: name.replace(/[\/\\?<>:*|"]/g, "_")
     });
   } catch (e) {
     const isError = e instanceof Error;

@@ -81,7 +81,7 @@ export async function download(videoId: string, controller: AbortController, upd
     data = new Uint8Array(await res.arrayBuffer());
   }
 
-  const titleFromHeader = res.headers.get("Content-Disposition")?.match(/filename\*=utf-8''(.+)\.mp3/i)?.[1].replace(/[\/\\?<>:*|"]/g, "_");
+  const titleFromHeader = res.headers.get("Content-Disposition")?.match(/filename\*=utf-8''(.+)\.mp3/i)?.[1];
 
   const title = titleFromHeader ? decodeURIComponent(titleFromHeader) : "Bez_názvu";
 
