@@ -39,7 +39,7 @@
     "message": "Zrušit"
   },
   "serverUnavailable": {
-    "message": "Server není dostupný. Zkuste to prosím později."
+    "message": "Server není dostupný. Zkuste to prosím později nebo přepněte na jiný server v nastavení."
   },
   "updateAvailable": {
     "message": "Je dostupná novější verze YTDown. Aktualizaci můžete provést pomocí {tohoto návodu}."
@@ -51,10 +51,10 @@
     "message": "Aktuální server podporuje starší verzi YTDown. Vy používáte $1 a server hlásí nejnovější jako $2. Stahování může probíhat nestandardně, nebo nemusí fungovat vůbec."
   },
   "serverInvalidVersionFormat": {
-    "message": "Server vrátil neplatnou verzi. Zkuste to prosím později."
+    "message": "Server vrátil neplatnou verzi. Zkuste to prosím později nebo přepněte na jiný server v nastavení."
   },
   "serverInvalidResponse": {
-    "message": "Server neodpověděl správně. Zkuste to prosím později."
+    "message": "Server neodpověděl správně. Zkuste to prosím později nebo přepněte na jiný server v nastavení."
   },
   "noVideoID": {
     "message": "Nepodařilo se získat ID videa. Zkontrolujte prosím, zda je URL videa ve správném tvaru."
@@ -73,5 +73,29 @@
   },
   "imageUnknownError": {
     "message": "Při ukládání obrázku došlo k neznámé chybě. Zkuste to znovu, nebo zkuste jiný."
+  },
+  "settingsTitle": {
+    "message": "Nastavení"
+  },
+  "settingsDescription": {
+    "message": "Přizpůsobte si chování YTDown podle svých potřeb."
+  },
+  "settingsDomain": {
+    "message": "Adresa serveru"
+  },
+  "settingsDomainDescription": {
+    "message": "Zadejte adresu serveru, kde je hostována naše preferovaná instance YTDown serveru. Pokud toto pole ponecháte prázdné, bude použit výchozí, soukromý server. Pokud chcete hostovat vlastní server, můžete najít instrukce na {GitHub stránce}."
+  },
+  "settingsLanguage": {
+    "message": "Jazyk"
+  },
+  "settingsLanguageAuto": {
+    "message": "-- použít jazyk prohlížeče --"
+  },
+  "settingsLanguageDescription": {
+    "message": "Pokud chcete, aby YTDown používal jiný jazyk než ten, který doporučuje váš prohlížeč, můžete si ho zde vybrat."
+  },
+  "save": {
+    "message": "Uložit"
   }
 }

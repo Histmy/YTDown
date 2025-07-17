@@ -1,5 +1,5 @@
 import { download } from "./downloader.js";
-import { config } from "./settings.js";
+import { config } from "./config.js";
 import { getRelevantString } from "./localization.js";
 import id3 from "./id3.js";
 
@@ -18,6 +18,7 @@ const stage1 = getEl(".st1");
 const stage2 = getEl(".st2");
 const stage3 = getEl(".st3");
 const errs = getEl(".errs");
+const settings = getEl(".settings");
 const baseProps = ["interpret", "title", "album"];
 let controller: AbortController;
 
@@ -118,6 +119,20 @@ errs.onclick = e => {
   const el = e.target as HTMLDivElement;
   if (el.tagName != "A")
     recurseRemove(el);
+};
+
+settings.onclick = () => {
+  browser.tabs.create({
+    url: browser.runtime.getURL("/res/settings.html"),
+    active: true,
+  }).then(() => {
+    // Close this window
+    browser.windows.getCurrent().then(win => {
+      browser.windows.remove(win.id!);
+    });
+  }).catch(err => {
+    console.error("Failed to open settings:", err);
+  });
 };
 
 form.onsubmit = async e => {

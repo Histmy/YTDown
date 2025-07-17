@@ -39,22 +39,22 @@
     "message": "Cancel"
   },
   "serverUnavailable": {
-    "message": "Server is unavailable. Please try again later."
+    "message": "Server is unavailable. Please try again later or switch to a different server in the settings."
   },
   "updateAvailable": {
     "message": "A newer version of YTDown is available. You can update it using {this guide}."
   },
   "updateGuideLink": {
-    "message": "https://support.mozilla.org/en-US/kb/how-to-update-add-ons#w_update-an-add-on"
+    "message": "https://support.mozilla.org/en-US/kb/how-update-add-ons#w_updating-add-ons"
   },
   "serverOld": {
     "message": "The current server supports an older version of YTDown. You are using $1 and the server reports the latest as $2. Downloading may behave unexpectedly or may not work at all."
   },
   "serverInvalidVersionFormat": {
-    "message": "The server returned an invalid version format. Please try again later."
+    "message": "The server returned an invalid version format. Please try again later or switch to a different server in the settings."
   },
   "serverInvalidResponse": {
-    "message": "The server did not respond correctly. Please try again later."
+    "message": "The server did not respond correctly. Please try again later or switch to a different server in the settings."
   },
   "noVideoID": {
     "message": "Failed to retrieve the video ID. Please check if the video URL is in the correct format."
@@ -73,5 +73,32 @@
   },
   "imageUnknownError": {
     "message": "An unexpected error occurred while saving the image. Please try again or select a different one."
+  },
+  "settingsTitle": {
+    "message": "Settings"
+  },
+  "settingsDescription": {
+    "message": "Configure the settings for YTDown."
+  },
+  "settingsDomain": {
+    "message": "Server domain"
+  },
+  "settingsDomainDescription": {
+    "message": "Enter the domain where your preferred YTDown server instance is hosted. If you leave this field empty, the default, private server will be used. If you want to host your own server, you can find the instructions on the {GitHub page}."
+  },
+  "settingsDomainLink": {
+    "message": "https://github.com/Histmy/YTDown-server"
+  },
+  "settingsLanguage": {
+    "message": "Language"
+  },
+  "settingsLanguageAuto": {
+    "message": "-- use browser language --"
+  },
+  "settingsLanguageDescription": {
+    "message": "If you want YTDown to use a different language than the one recommended by your browser, you can select it here."
+  },
+  "save": {
+    "message": "Save"
   }
 }

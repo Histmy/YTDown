@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="settings.css">
+  <title data-i18n="settingsTitle"></title>
+  <link rel="icon" href="../images/icon.png" type="image/png">
+</head>
+
+<body>
+  <h1 data-i18n="settingsTitle"></h1>
+  <p data-i18n="settingsDescription"></p>
+  <div class="settingsField">
+    <div class="input">
+      <label for="domain" data-i18n="settingsDomain"></label>
+      <input type="text" id="domain" name="domain">
+    </div>
+    <p data-i18n="settingsDomainDescription" data-i18n-link="settingsDomainLink"></p>
+  </div>
+  <div class="settingsField">
+    <div class="input">
+      <label for="language" data-i18n="settingsLanguage"></label>
+      <select id="language" name="language">
+        <option value="auto" data-i18n="settingsLanguageAuto"></option>
+        <option value="cs">Čeština</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <p data-i18n="settingsLanguageDescription"></p>
+  </div>
+  <input id="save" class="btn" type="submit" data-i18n-value="save">
+
+  <script type="module" src="../scripts/settings.js"></script>
+  <script type="module" src="../scripts/localization.js"></script>
+</body>
+
+</html>

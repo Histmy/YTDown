@@ -4,7 +4,7 @@
  */
 
 import { getRelevantString } from "./localization.js";
-import { config } from "./settings.js";
+import { config } from "./config.js";
 
 /**
  * Downloads a video from YouTube by its ID.

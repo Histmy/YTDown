@@ -33,9 +33,9 @@ body {
   justify-content: center
 }
 
-body, input, .btn{
+body, input, select, .btn {
   color: #FFF;
-  font-family: Ubuntu;
+  font-family: Ubuntu, sans-serif;
   font-size: 18px
 }
 
@@ -111,7 +111,7 @@ label {
   font-weight: 500
 }
 
-input {
+input, select {
   box-sizing: border-box;
   width: 304px;
   height: 54px;
@@ -126,7 +126,7 @@ input:focus {
   border-color: var(--main)
 }
 
-input, .edit, .cover, .border {
+input, select, .edit, .cover, .border {
   border: 2px solid #FFF;
   border-radius: 10px
 }
@@ -217,4 +217,15 @@ div.progress {
 span.progress {
   font-size: 24px;
   width: 50px
+}
+
+.settings {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	width: 25px;
+	height: 25px;
+	padding: 4px;
+	border-radius: 33%;
+	background: #464646;
 }

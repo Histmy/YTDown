@@ -22,7 +22,14 @@ function lookupOverride(key: string, substitutions: string[]) {
 }
 
 export function getRelevantString(key: string, substitutions: string[] = []) {
-  return lang ? lookupOverride(key, substitutions) : lookupBasic(key, substitutions);
+  const str = lang ? lookupOverride(key, substitutions) : lookupBasic(key, substitutions);
+
+  if (!str) {
+    console.warn(`Missing translation for key: ${key} in language: ${lang}`);
+    return key; // Fallback to the key itself if no translation is found
+  }
+
+  return str;
 }
 
 function getString(element: Element, dataKey: string) {
@@ -33,6 +40,23 @@ function getString(element: Element, dataKey: string) {
   }
 
   return getRelevantString(key);
+}
+
+function addLink(element: Element, value: string, linkKey: string) {
+  const link = getRelevantString(linkKey);
+
+  const text = value.match(/\{([^\}]+)\}/g)!;
+  const index = value.indexOf(text[0]);
+
+  element.appendChild(document.createTextNode(value.slice(0, index)));
+
+  const linkElement = document.createElement("a");
+  linkElement.href = link;
+  linkElement.textContent = text[0].slice(1, -1);
+
+  element.appendChild(linkElement);
+
+  element.appendChild(document.createTextNode(value.slice(index + text[0].length)));
 }
 
 async function execute() {
@@ -52,18 +76,21 @@ async function execute() {
 
   document.querySelectorAll("[data-i18n]").forEach(element => {
     const value = getString(element, "data-i18n");
-    element.textContent = value;
-  });
+    const linkKey = element.getAttribute("data-i18n-link");
 
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
-    const value = getString(element, "data-i18n-placeholder");
-    element.setAttribute("placeholder", value);
+    if (linkKey) {
+      addLink(element, value, linkKey);
+    } else {
+      element.textContent = value;
+    }
   });
 
   document.querySelectorAll("[data-i18n-value]").forEach((element) => {
     const value = getString(element, "data-i18n-value");
     element.setAttribute("value", value);
   });
+
+  document.body.parentElement?.setAttribute("lang", lang || "en");
 
   document.body.style.visibility = "visible";
 }
