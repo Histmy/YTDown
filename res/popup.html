@@ -10,31 +10,37 @@
 </head>
 
 <body>
-  <form>
-    <div class="inputs">
-      <div class="input">
-        <label for="title" data-i18n="songTitle"></label>
-        <input type="text" name="title" id="title">
+  <div class="main">
+    <form>
+      <div class="inputs">
+        <div class="input">
+          <label for="title" data-i18n="songTitle"></label>
+          <input type="text" name="title" id="title">
+        </div>
+        <div class="input">
+          <label for="interpret" data-i18n="songInterpret"></label>
+          <input type="text" name="interpret" id="interpret">
+        </div>
+        <div class="input">
+          <label for="album" data-i18n="songAlbum"></label>
+          <input type="text" name="album" id="album">
+        </div>
       </div>
-      <div class="input">
-        <label for="interpret" data-i18n="songInterpret"></label>
-        <input type="text" name="interpret" id="interpret">
+      <div class="img">
+        <label data-i18n="songImage"></label>
+        <div class="edit">
+          <img class="tuzka" src="../images/tuzka.png">
+        </div>
+        <img class="cover">
       </div>
-      <div class="input">
-        <label for="album" data-i18n="songAlbum"></label>
-        <input type="text" name="album" id="album">
-      </div>
+      <input type="file" class="hidden">
+      <input class="btn" type="submit" data-i18n-value="download">
+    </form>
+
+    <div class="settings btn">
+      <img src="../images/gear.svg" alt="gear">
     </div>
-    <div class="img">
-      <label data-i18n="songImage"></label>
-      <div class="edit">
-        <img class="tuzka" src="../images/tuzka.png">
-      </div>
-      <img class="cover">
-    </div>
-    <input type="file" class="hidden">
-    <input class="btn" type="submit" data-i18n-value="download">
-  </form>
+  </div>
 
   <div class="downloading hidden">
     <div class="st1">
@@ -61,10 +67,6 @@
   </div>
 
   <div class="errs"></div>
-
-  <div class="settings btn">
-    <img src="../images/gear.svg" alt="gear">
-  </div>
 
   <script type="module" src="../scripts/localization.js"></script>
   <script type="module" src="../scripts/app.js"></script>

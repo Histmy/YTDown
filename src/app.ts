@@ -5,6 +5,7 @@ import id3 from "./id3.js";
 
 // Constants and variables
 const vidID = /id=([\w\d_-]+)/i.exec(window.location.search)?.[1] as string;
+const main = getEl(".main");
 const form = getEl<HTMLFormElement>("form");
 const edit = getEl(".edit");
 const coverImg = getEl<HTMLImageElement>(".cover");
@@ -74,7 +75,7 @@ function switchEls(from: HTMLElement, to: HTMLElement) {
 
 function restart() {
   switchEls(stage2, stage1);
-  switchEls(downloading, form);
+  switchEls(downloading, main);
 }
 
 function recurseRemove(el: HTMLElement) {
@@ -138,7 +139,7 @@ settings.onclick = () => {
 form.onsubmit = async e => {
   e.preventDefault();
 
-  switchEls(form, downloading);
+  switchEls(main, downloading);
 
   const props = new Map();
   baseProps.forEach(n => {
@@ -163,6 +164,7 @@ form.onsubmit = async e => {
       }
     });
 
+    switchEls(stage1, stage2); // Hide stage1 in case the progress didn't occur
     switchEls(stage2, stage3);
     cancelBtn.classList.add("hidden");
 
